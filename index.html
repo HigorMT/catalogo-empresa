@@ -7,13 +7,26 @@
 
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="./styles/loader-style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
 
 <nav>
     <img width="124" height="62" src="https://storage.googleapis.com/media_files_prod/uploads/tertiarygroup/6143/tertiarygroup-f179e69e3b76c3c3c6d687d4d17e824a.png" alt="Videira Cuiabá" class="ng-star-inserted">
 
-    <h1>Catálogo de Empresas</h1>
+    <div>
+        <h1>Catálogo de Empresas</h1>
+
+<!--        <input type="text" id="busca" placeholder="Buscar por nome...">-->
+
+        <div class="search-container">
+            <input type="text" id="busca" placeholder="Buscar por nome...">
+            <button id="btn-busca" aria-label="Buscar">
+                🔍
+            </button>
+        </div>
+
+    </div>
 </nav>
 
 <div id="loader" class="loader-container">
