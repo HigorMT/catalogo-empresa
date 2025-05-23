@@ -48,11 +48,13 @@ function renderizarDados(lista: Map<string, DadosPlanilha>[]): void {
         const card: HTMLDivElement = document.createElement("div");
         card.className = "card";
 
+        const telefoneFormatado: string = formatarTelefone(`${item?.telefone?.value || ''}`);
+
         card.innerHTML = `
           <p id="nome_da_empresa_${index + 1}" class="nome_empresa"><strong>${item?.nome_da_empresa?.value}</strong></p>
-          <p id="telefone_da_empresa_${index + 1}"><strong>Telefone</strong> ${item?.telefone?.value}</p>
-          <p id="e_mail_da_empresa_${index + 1}"><strong>E-mail</strong> ${item?.e_mail?.value}</p>
-          <p id="endereco_da_empresa_${index + 1}"><strong>Endereço</strong> ${item?.endereco_da_empresa?.value}</p>
+          <p id="telefone_da_empresa_${index + 1}"><strong>Telefone: &nbsp;</strong> ${telefoneFormatado}</p>
+          <p id="e_mail_da_empresa_${index + 1}"><strong>E-mail: &nbsp;</strong> ${item?.e_mail?.value}</p>
+          <p id="endereco_da_empresa_${index + 1}"><strong>Endereço: &nbsp;</strong> ${item?.endereco_da_empresa?.value}</p>
         `
 
         card.addEventListener("click", (): void => abrirModal(item as any));
@@ -68,43 +70,92 @@ function abrirModal(item: CompleteData): void {
     const whatsappNumber: string | undefined = `${item?.telefone?.value}`?.replace(/\D/g, "");
     const link = `https://wa.me/${whatsappNumber}`;
 
+    const telefoneFormatado: string = formatarTelefone(whatsappNumber)
+
     modalContent.innerHTML = `
-    
           <p id="nome_da_empresa" class="nome_empresa"><strong>${item?.nome_da_empresa?.value}</strong></p>
-          <p id="representante"><strong>Representante</strong> ${item?.nome?.value}</p>
-          <p id="telefone_da_empresa"><strong>Telefone</strong> ${item?.telefone?.value}</p>
-          <p id="e_mail_da_empresa"><strong>E-mail</strong> ${item?.e_mail?.value}</p>
-           <p id="area_de_atuacao_"><strong>Area de Atuação</strong> ${item?.area_de_atuacao_?.value}</p>
-          <p id="natureza_do_trabalho"><strong>Natureza da Empresa</strong> ${item?.natureza_do_trabalho_?.value}</p>
-          <p id="tempo_de_atuacao_e_de_experiencia"><strong>Tempo de Atuação</strong> ${item?.tempo_de_atuacao_e_de_experiencia?.value}</p>
-          <p id="descricao_dos_servicos_prestados"><strong>Descrição dos Serviços</strong> ${item?.descricao_dos_servicos_prestados?.value}</p>
-        
-          <p id="endereco_da_empresa"><strong>Endereço</strong> ${item?.endereco_da_empresa?.value}</p>
+          <p id="representante">
+                <strong>
+                    Representante:&nbsp;
+                </strong>
+               <span>
+                   ${item?.nome?.value}
+               </span> 
+          </p>
+          <p id="telefone_da_empresa" class="copy">
+                <strong>
+                    Telefone:&nbsp;
+                </strong>
+                <span>
+                    ${telefoneFormatado}
+                </span>
+                &nbsp;
+                <button id="btn_telefone_da_empresa" class="copy-btn material-symbols-outlined" data-copy="${telefoneFormatado}" title="Copiar telefone">
+                  content_copy
+                </button>
+          </p>
+          <p id="e_mail_da_empresa" class="copy">
+                <strong>
+                    E-mail:&nbsp;
+                </strong>
+                <span>
+                    ${item?.e_mail?.value}
+                </span>
+                &nbsp;
+                <button id="btn_e_mail_da_empresa" class="copy-btn material-symbols-outlined" data-copy="${item?.e_mail?.value}" title="Copiar e-mail">
+                  content_copy
+                </button>
+          </p>
+          
+          <p id="area_de_atuacao_">
+               <strong>
+                    Area de Atuação:&nbsp;
+               </strong>
+               <span>
+                   ${item?.area_de_atuacao_?.value}
+               </span>
+          </p>
+          <p id="natureza_do_trabalho">
+              <strong>
+                Natureza da Empresa:&nbsp;
+              </strong>
+               <span>
+                   ${item?.natureza_do_trabalho_?.value}
+               </span>
+          </p>
+          
+          <p id="tempo_de_atuacao_e_de_experiencia">
+          <strong>
+            Tempo de Atuação:&nbsp;
+          </strong>
+           <span>
+                ${item?.tempo_de_atuacao_e_de_experiencia?.value}
+           </span> 
+        </p>
+          <p id="descricao_dos_servicos_prestados">
+          <strong>
+                Descrição dos Serviços:&nbsp;
+          </strong> 
+           <span>
+               ${item?.descricao_dos_servicos_prestados?.value}
+           </span> 
+        </p>
+                
+          <p id="endereco_da_empresa">
+              <strong>
+                    Endereço:&nbsp;
+              </strong> 
+               <span>
+                   ${item?.endereco_da_empresa?.value}
+               </span> 
+          </p>
     
-            <div class="logo-whatsapp" title="Clique para iniciar uma conversa com este contato">
+          <div class="logo-whatsapp" title="Clique para iniciar uma conversa com este contato">
                 <a href="${link}" target="_blank">
                     <img src="./imgs/WhatsApp-logo.png" alt="logo WhatsApp" width="50" height="50">
                 </a>
             </div>
     `
-
-
-        const t = Object.entries(item)
-        .map(([_, {header, value}]): string => {
-            if (header?.toLowerCase().includes("telefone")) {
-                const whatsappNumber: string | undefined = `${value}`?.replace(/\D/g, "");
-                const link = `https://wa.me/${whatsappNumber}`;
-
-                return `<div class="logo-whatsapp" title="Clique para iniciar uma conversa com este contato">
-                        <a href="${link}" target="_blank">
-                            <img src="./imgs/WhatsApp-logo.png" alt="logo WhatsApp" width="50" height="50">
-                        </a>
-                    </div>`;
-            }
-
-            return `<p><strong>${header}:</strong> ${value}</p>`;
-        })
-        .join("");
 
     modalOverlay.classList.remove("hidden");
 }
@@ -164,3 +215,39 @@ document.addEventListener("DOMContentLoaded", (): void => {
 
 });
 
+document.addEventListener("click", function (e): void {
+    const target = e.target as HTMLElement;
+
+    if (target.matches(".copy-btn")) {
+        const textToCopy: string | null = target.getAttribute("data-copy");
+        if (!textToCopy) return;
+
+        navigator.clipboard.writeText(textToCopy)
+            .then((): void => {
+                target.innerText = "check";
+                setTimeout((): void => { target.innerText = "content_copy";}, 1500);
+            })
+            .catch((err: any): void => {
+                console.error("Erro ao copiar:", err);
+            });
+    }
+});
+
+
+function formatarTelefone(numero?: string): string {
+    if (!numero) {
+        return '';
+    }
+
+    const limpo: string = numero?.replace(/\D/g, '');
+
+    if (limpo.length === 11) {
+        return limpo.replace(/(\d{2})(\d{5})(\d{4})/, '($1) $2-$3');
+    }
+
+    if (limpo.length === 10) {
+        return limpo.replace(/(\d{2})(\d{4})(\d{4})/, '($1) $2-$3');
+    }
+
+    return numero;
+}

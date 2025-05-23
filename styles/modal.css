@@ -1,3 +1,5 @@
+@import "style.css";
+
 .modal-overlay {
     position: fixed;
     top: 0;
@@ -12,7 +14,7 @@
 }
 
 .modal {
-    background: linear-gradient(135deg,  #0d4239, #0c5c4f), linear-gradient(220deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.4));
+    background: linear-gradient(135deg,  #0d342d, #004035), linear-gradient(220deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.4));
     border-radius: 10px;
     padding: 2rem;
     max-width: 600px;
@@ -42,11 +44,10 @@
     inset: 0;
     z-index: 0;
     pointer-events: none;
-    background: url("data:image/svg+xml;utf8,\ <svg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'>\   <rect width='60' height='60' fill='transparent'/>\   <g stroke='%23bfa870' stroke-width='0.6' stroke-opacity='0.15'>\     <line x1='0' y1='0' x2='0' y2='60'/>\     <line x1='20' y1='0' x2='20' y2='60'/>\     <line x1='40' y1='0' x2='40' y2='60'/>\     <line x1='60' y1='0' x2='60' y2='60'/>\     <line x1='0' y1='0' x2='60' y2='0'/>\     <line x1='0' y1='20' x2='60' y2='20'/>\     <line x1='0' y1='40' x2='60' y2='40'/>\     <line x1='0' y1='60' x2='60' y2='60'/>\   </g>\ </svg>");
+    background: url("data:image/svg+xml;utf8,\ <svg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'>\   <rect width='120' height='120' fill='transparent'/>\   <g stroke='%23d4af37' stroke-width='1.2' stroke-opacity='0.5' transform='rotate(15,60,60)'>\     <!-- Vertical lines -->\     <line x1='0' y1='0' x2='0' y2='40'/>\     <line x1='0' y1='80' x2='0' y2='120'/>\     <line x1='30' y1='0' x2='30' y2='120'/>\     <line x1='60' y1='0' x2='60' y2='60'/>\     <line x1='60' y1='90' x2='60' y2='120'/>\     <line x1='90' y1='0' x2='90' y2='120'/>\     <line x1='120' y1='0' x2='120' y2='120'/>\     \     <!-- Horizontal lines -->\     <line x1='0' y1='0' x2='120' y2='0'/>\     <line x1='0' y1='30' x2='50' y2='30'/>\     <line x1='70' y1='30' x2='120' y2='30'/>\     <line x1='0' y1='60' x2='120' y2='60'/>\     <line x1='0' y1='90' x2='90' y2='90'/>\     <line x1='110' y1='90' x2='120' y2='90'/>\     <line x1='0' y1='120' x2='120' y2='120'/>\   </g>\ </svg>");
     background-repeat: repeat;
-    background-size: 60px 60px;
-    border-radius: inherit;
-    transform: scale(2, 5) rotate(340deg);
+    background-size: 120px 120px;
+    transform: scale(16.8) rotate(227deg);
 }
 
 .modal-content p {
@@ -67,9 +68,21 @@
     text-align: center;
     font-size: 2rem;
     font-weight: bold;
-    color: #ffc56e;
+    color: #fe785f;
 }
 
 .hidden {
     display: none;
+}
+
+#telefone_da_empresa, #e_mail_da_empresa {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.modal .modal-content p span {
+    color: #fe785f;
 }
