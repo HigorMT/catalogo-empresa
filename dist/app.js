@@ -55,7 +55,7 @@ function abrirModal(item) {
            <p id="area_de_atuacao_"><strong>Area de Atuação</strong> ${(_g = item === null || item === void 0 ? void 0 : item.area_de_atuacao_) === null || _g === void 0 ? void 0 : _g.value}</p>
           <p id="natureza_do_trabalho"><strong>Natureza da Empresa</strong> ${(_h = item === null || item === void 0 ? void 0 : item.natureza_do_trabalho_) === null || _h === void 0 ? void 0 : _h.value}</p>
           <p id="tempo_de_atuacao_e_de_experiencia"><strong>Tempo de Atuação</strong> ${(_j = item === null || item === void 0 ? void 0 : item.tempo_de_atuacao_e_de_experiencia) === null || _j === void 0 ? void 0 : _j.value}</p>
-          <p id="descricao_dos_servicos_prestados"><strong>Endereço</strong> ${(_k = item === null || item === void 0 ? void 0 : item.descricao_dos_servicos_prestados) === null || _k === void 0 ? void 0 : _k.value}</p>
+          <p id="descricao_dos_servicos_prestados"><strong>Descrição dos Serviços</strong> ${(_k = item === null || item === void 0 ? void 0 : item.descricao_dos_servicos_prestados) === null || _k === void 0 ? void 0 : _k.value}</p>
         
           <p id="endereco_da_empresa"><strong>Endereço</strong> ${(_l = item === null || item === void 0 ? void 0 : item.endereco_da_empresa) === null || _l === void 0 ? void 0 : _l.value}</p>
     

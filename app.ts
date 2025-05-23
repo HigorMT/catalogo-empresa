@@ -77,7 +77,7 @@ function abrirModal(item: CompleteData): void {
            <p id="area_de_atuacao_"><strong>Area de Atuação</strong> ${item?.area_de_atuacao_?.value}</p>
           <p id="natureza_do_trabalho"><strong>Natureza da Empresa</strong> ${item?.natureza_do_trabalho_?.value}</p>
           <p id="tempo_de_atuacao_e_de_experiencia"><strong>Tempo de Atuação</strong> ${item?.tempo_de_atuacao_e_de_experiencia?.value}</p>
-          <p id="descricao_dos_servicos_prestados"><strong>Endereço</strong> ${item?.descricao_dos_servicos_prestados?.value}</p>
+          <p id="descricao_dos_servicos_prestados"><strong>Descrição dos Serviços</strong> ${item?.descricao_dos_servicos_prestados?.value}</p>
         
           <p id="endereco_da_empresa"><strong>Endereço</strong> ${item?.endereco_da_empresa?.value}</p>
     

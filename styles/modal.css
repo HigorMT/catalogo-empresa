@@ -17,10 +17,9 @@
     padding: 2rem;
     max-width: 600px;
     width: 90%;
-    max-height: 80%;
+    max-height: 90%;
     overflow: hidden;
     position: relative;
-    height: 571px;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
 }
 
@@ -55,13 +54,11 @@
     color: white;
 }
 
-.modal-content .logo-whatsapp {
-    position: relative;
-
+.modal .modal-content .logo-whatsapp {
     img {
         position: absolute;
-        right: -18px;
-        bottom: -159px;
+        right: 11px;
+        bottom: 10px;
     }
 
 }
