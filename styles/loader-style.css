@@ -1,10 +1,11 @@
+
 .loader-container {
     position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-color: rgba(30, 30, 47, 0.95);
+    background-color: rgba(20, 120, 101, 0.83);
     display: flex;
     justify-content: center;
     align-items: center;

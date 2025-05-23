@@ -7,25 +7,39 @@
 
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="./styles/loader-style.css">
+    <link rel="stylesheet" href="./styles/modal.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
 </head>
 <body>
 
-<nav>
-    <img width="124" height="62" src="https://storage.googleapis.com/media_files_prod/uploads/tertiarygroup/6143/tertiarygroup-f179e69e3b76c3c3c6d687d4d17e824a.png" alt="Videira Cuiabá" class="ng-star-inserted">
+<nav id="navbar" class="collapsed">
+    <div class="logo">
+        <img width="124" height="62" src="https://storage.googleapis.com/media_files_prod/uploads/tertiarygroup/6143/tertiarygroup-f179e69e3b76c3c3c6d687d4d17e824a.png" alt="Videira Cuiabá">
+    </div>
 
-    <div>
+    <div class="titles">
         <h1>Catálogo de Empresas</h1>
+        <h3>Empreendedores Radicais</h3>
+    </div>
 
-<!--        <input type="text" id="busca" placeholder="Buscar por nome...">-->
+    <div class="search-icon" id="search-icon" title="Buscar">
+        <span class="material-symbols-outlined">search</span>
+    </div>
 
-        <div class="search-container">
-            <input type="text" id="busca" placeholder="Buscar por nome...">
-            <button id="btn-busca" aria-label="Buscar">
-                🔍
-            </button>
-        </div>
+    <div class="forms-icon" id="forms-icon" title="Sou Empreendedor, quero me cadastrar">
+        <a href="https://forms.gle/Eq9EDpPfQAwCAh166" target="_blank">
+            <span class="material-symbols-outlined">forms_add_on</span>
+        </a>
+    </div>
 
+    <div class="times-icon hidden" id="times-icon" title="Fechar Buscar">
+        <span class="material-symbols-outlined">cancel</span>
+    </div>
+
+    <div class="search-container hidden" id="search-container">
+        <input type="text" id="busca" placeholder="Buscar por nome..." />
+        <button id="btn-busca" aria-label="Buscar">🔍</button>
     </div>
 </nav>
 
@@ -40,6 +54,14 @@
 <main>
     <div id="empresa-lista" class="grid"></div>
 </main>
+
+
+<div id="modal-overlay" class="modal-overlay hidden">
+    <div class="modal">
+        <span id="modal-close" class="modal-close">&times;</span>
+        <div id="modal-content" class="modal-content"></div>
+    </div>
+</div>
 
 
 <footer>

@@ -1,25 +1,203 @@
-body {
-    font-family: 'Inter', sans-serif;
-    background: #f2f2f2;
-    margin: 0;
-    padding: 2rem;
-    color: #313233;
+/* =======================
+   VARIÁVEIS GLOBAIS
+========================== */
+:root {
+    --color-primary: #1abc9c;
+    --color-primary-dark: rgba(20, 120, 101, 0.88);
+    --color-highlight: #cc5c00;
+    --color-bg: #104338;
+    --color-bg-mid: #0d5c4f;
+    --color-bg-dark: #012e24;
+    --color-text: #313233;
+    --color-accent: #f5ba60;
+    --color-light: #ffffff;
+    --color-muted: #a8a8a8;
+    --color-dark: #222;
+    --shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    --shadow-hover: 0 12px 24px rgba(0, 0, 0, 0.4);
+    --transition: 0.3s ease;
+    --radius: 12px;
+    --font: 'Inter', sans-serif;
+    --nav-font: 'Poppins', sans-serif;
+    --nav-height: 120px;
+    --footer-height: 40px;
+    --input-radius: 5px;
+    --color-royal-green: #2a5e42;
+}
+
+/* =======================
+   RESET E BASE
+========================== */
+* {
+    box-sizing: border-box;
 }
 
 html, body {
     height: 100%;
     margin: 0;
     padding: 0;
-    display: flex;
-    flex-direction: column;
     min-width: 700px;
     overflow-x: auto;
+    font-family: var(--font);
+    color: var(--color-text);
+
+    background: linear-gradient(135deg, var(--color-bg), var(--color-bg-mid), var(--color-bg-dark)), linear-gradient(220deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.4));
+
+    background-blend-mode: overlay;
+
+    display: flex;
+    flex-direction: column;
 }
 
+/* =======================
+   NAVBAR
+========================== */
+nav {
+    position: relative;
+    width: 100%;
+    height: var(--nav-height);
+    min-width: 710px;
+    background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: visible;
+}
+
+nav .titles {
+    margin-top: 0px;
+}
+
+nav .logo {
+    min-width: 150px;
+}
+
+nav .logo img {
+    position: absolute;
+    top: 10px;
+    left: 20px;
+}
+
+nav h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-top: 0px;
+    color: var(--color-accent);
+    letter-spacing: 1px;
+}
+
+nav h3 {
+    font-size: 1.5rem;
+    margin-top: -18px;
+    font-weight: 400;
+    color: var(--color-light);
+    opacity: 0.9;
+}
+
+nav h1,
+nav h3 {
+    text-align: center;
+    font-family: var(--font);
+}
+
+nav div {
+    display: grid;
+}
+
+nav::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+    background: url("data:image/svg+xml;utf8,\ <svg xmlns='http://www.w3.org/2000/svg' width='140' height='140' viewBox='0 0 140 140'>\   <rect width='140' height='140' fill='%230d5c4f'/>\   <g fill='none' stroke='%23bfa870' stroke-width='1.5' stroke-opacity='0.3'>\     <polygon points='70,10 120,60 70,110 20,60'/>\     <polygon points='0,60 70,110 70,10 0,0'/>\     <polygon points='70,110 140,60 140,140 70,140'/>\   </g>\ </svg>");
+    background-repeat: repeat;
+    background-size: 140px 140px;
+    transform-origin: center;
+}
+
+nav.expanded {
+    height: 220px;
+}
+
+.search-icon, .forms-icon {
+    position: absolute;
+    right: 31px;
+    bottom: 15px;
+
+    font-size: 1.8rem;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.forms-icon {
+    right: 75px;
+    bottom: 8px;
+}
+
+.times-icon {
+    position: absolute;
+    left: 31px;
+    bottom: 15px;
+
+    font-size: 1.8rem;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.times-icon .hiden {
+    display: none;
+}
+
+.search-icon:hover {
+    transform: scale(1.1);
+}
+
+.search-container {
+    margin-top: 1rem;
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+.search-container .hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+
+/* =======================
+   MAIN CONTENT
+========================== */
+main {
+    flex: 1;
+    padding: 2rem;
+    margin-top: 80px;
+}
+
+/* =======================
+   TÍTULOS
+========================== */
 h1 {
     text-align: center;
     margin-bottom: 2rem;
-    color: #cc5c00;
+    color: var(--color-highlight);
+}
+
+/* =======================
+   GRID DE EMPRESAS
+========================== */
+#empresa-lista {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 1.5rem;
 }
 
 .grid {
@@ -28,46 +206,57 @@ h1 {
     gap: 1.5rem;
 }
 
-
+/* =======================
+   CARD DE EMPRESA
+========================== */
 .card {
-    background: rgba(255, 255, 255, 0.95);
-    border-radius: 12px;
+    background: linear-gradient(135deg,  #0d4239, #0c5c4f), linear-gradient(220deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.4));
+    border-radius: 35px 8px 35px 8px;
     padding: 1.5rem;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-    color: #a8a8a8;
-    transition: 0.3s;
-
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4), inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+    color: var(--color-light);
+    transition: all 0.3s ease;
     position: relative;
-
-    .logo {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-
-        width: 100%;
-        display: flex;
-        justify-content: end;
-        align-content: center;
-
-        img {
-            border: 1px solid #394648;
-            border-radius: 50px;
-            height: 50px;
-            width: 50px;
-        }
-
-    }
-
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(4px);
+    overflow: hidden;
 }
 
-.card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+.card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background: url("data:image/svg+xml;utf8,\ <svg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'>\   <rect width='60' height='60' fill='transparent'/>\   <g stroke='%23bfa870' stroke-width='0.6' stroke-opacity='0.15'>\     <line x1='0' y1='0' x2='0' y2='60'/>\     <line x1='20' y1='0' x2='20' y2='60'/>\     <line x1='40' y1='0' x2='40' y2='60'/>\     <line x1='60' y1='0' x2='60' y2='60'/>\     <line x1='0' y1='0' x2='60' y2='0'/>\     <line x1='0' y1='20' x2='60' y2='20'/>\     <line x1='0' y1='40' x2='60' y2='40'/>\     <line x1='0' y1='60' x2='60' y2='60'/>\   </g>\ </svg>");
+    background-repeat: repeat;
+    background-size: 60px 60px;
+    border-radius: inherit;
+    transform: scale(2, 5) rotate(340deg);
+}
+
+.card::before {
+    content: "";
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    right: -1px;
+    bottom: -1px;
+    border-radius: inherit;
+    background: linear-gradient(120deg, rgba(255, 215, 0, 0.05), rgba(255, 255, 255, 0.03));
+    pointer-events: none;
+    z-index: 1;
+}
+
+.card .nome_empresa {
+    text-align: center;
+    font-weight: bold;
+    color: #ffc56e;
 }
 
 .card h2 {
     margin: 0;
-    color: #222;
+    color: var(--color-dark);
     font-size: 1.25rem;
 }
 
@@ -76,90 +265,39 @@ h1 {
     font-size: 0.95rem;
 }
 
-
-nav {
-
-    min-width: 700px;
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100px;
-    width: 100%;
-    background: #313233;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.4);
-    z-index: 1000;
-
-    margin-bottom: 50px;
-
-    justify-content: center;
-    align-items: center;
+.card .logo {
+    position: absolute;
+    top: 10px;
+    right: 10px;
     display: flex;
-
-    img {
-        position: absolute;
-        left: 20px;
-        top: 10px;
-    }
-
-    h1 {
-        color: #f1f1f1;
-        margin-top: -3px;
-    }
-
-    div {
-        display: grid
-
-    }
-
-}
-
-nav div input[type="text"] {
-    padding: 0.5rem 1rem;
-    border: none;
-    border-radius: 5px;
-    font-size: 1rem;
-    flex: 0 0 250px;
-    width: 26rem;
-}
-
-#empresa-lista {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 1.5rem;
-}
-
-footer {
-    background-color: #313233;
+    justify-content: end;
+    align-content: center;
     width: 100%;
-    color: #aaa;
-    height: 40px;
-    font-size: 0.9rem;
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 -2px 8px rgba(0,0,0,0.2);
-
-    position: fixed;
-    bottom: 0;
-    left: 0;
 }
 
-
-main {
-    flex: 1;
-    padding: 2rem;
-    margin-top: 80px;
+.card .logo img {
+    border: 1px solid #394648;
+    border-radius: 50px;
+    height: 50px;
+    width: 50px;
 }
 
+/* =======================
+   SEARCH CONTAINER
+========================== */
 .search-container {
     display: flex;
     align-items: center;
     background-color: #fff;
-    border-radius: 5px;
+    border-radius: var(--input-radius);
     overflow: hidden;
     border: 1px solid #ccc;
     margin-top: -24px;
+
+
+    position: absolute;
+    right: 17px;
+    bottom: 16px;
 }
 
 .search-container input {
@@ -183,4 +321,84 @@ main {
 
 .search-container button:hover {
     background-color: #eee;
+}
+
+/* =======================
+   FOOTER
+========================== */
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    height: var(--footer-height);
+    width: 100%;
+    background: linear-gradient(135deg, #0d5c4f, #023e30); /* Igual ao nav */
+    color: var(--color-light);
+    font-size: 0.9rem;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+}
+
+footer::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    background: url("data:image/svg+xml;utf8,\ <svg xmlns='http://www.w3.org/2000/svg' width='140' height='140' viewBox='0 0 140 140'>\   <rect width='140' height='140' fill='transparent'/>\   <g fill='none' stroke='%23bfa870' stroke-width='1.5' stroke-opacity='0.3'>\     <polygon points='70,10 120,60 70,110 20,60'/>\     <polygon points='0,60 70,110 70,10 0,0'/>\     <polygon points='70,110 140,60 140,140 70,140'/>\   </g>\ </svg>");
+    background-repeat: repeat;
+    background-size: 140px 140px;
+}
+
+
+@media (max-width: 1180px) {
+
+    nav {
+        min-height: 180px;
+        height: 180px;
+
+        h1 {
+            margin-top: -39px;
+        }
+
+    }
+
+}
+
+@media (max-width: 710px) {
+
+    nav {
+        min-height: 240px;
+        height: 240px;
+
+        h1 {
+            margin-top: -39px;
+        }
+
+        .logo {
+            min-width: 0px;
+        }
+
+        .titles {
+            margin-top: 80px;
+        }
+
+    }
+
+}
+
+
+.material-symbols-outlined {
+    font-variation-settings:
+            'FILL' 0,
+            'wght' 400,
+            'GRAD' 0,
+            'opsz' 24;
+    font-size: 24px;
+    cursor: pointer;
+    color: white;
 }
